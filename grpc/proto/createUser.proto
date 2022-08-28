@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+option go_package ="grpc/pb";
+
+message Request{
+    Pessoa pessoa =1;
+    Outros outros = 2;
+}
+
+message Pessoa {
+    string Nome = 1;
+    string Sobrenome =2;
+    int32 Idade = 3;
+    string DataDeNascimento = 4;
+}
+
+message Outros {
+    repeated string CodigosCertificados = 1 ;
+}
+
+
+
+
+message Response{
+    string id = 1;
+    Pessoa pessoa =2;
+    Outros outros = 3;
+}
+
+service CreateUser{
+    rpc RequestMessage (Request) returns (Response){}
+}
